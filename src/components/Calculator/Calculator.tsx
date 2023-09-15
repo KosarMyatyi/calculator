@@ -4,6 +4,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import weights from '../../data/weights.json';
+import { CableData } from '../../types/types';
 
 const Calculator = () => {
   const [group, setGroup] = useState<string>('')
@@ -12,7 +13,7 @@ const Calculator = () => {
   const [sum, setSum] = useState<number | string | null>(null)
 
   const result = () => {
-    const calc = (weights as any)[group][subGroup][0].value;
+    const calc = (weights as CableData)[group][subGroup][0].value;
     setSum(((calc) * Number(length)).toFixed(1));
   }
 
@@ -42,7 +43,7 @@ const Calculator = () => {
             }}
             disablePortal
             id="brand_size_subgroup"
-            options={group ? Object.keys((weights as any)[group]) : ['']}
+            options={group ? Object.keys((weights as CableData)[group]) : ['']}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Подгруппа маркаразмера" />}
           />
