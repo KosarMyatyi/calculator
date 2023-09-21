@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import cls from './Calculator.module.css'
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
@@ -10,11 +10,11 @@ const Calculator = () => {
   const [group, setGroup] = useState<string>('')
   const [subGroup, setSubGroup] = useState<string>('')
   const [length, setLength] = useState<string>('')
-  const [sum, setSum] = useState<number | string | null>(null)
+  const [sum, setSum] = useState<string |null>(null)
 
   const result = () => {
     const calc = (weights as CableData)[group][subGroup][0].value;
-    setSum(((calc) * Number(length)).toFixed(1));
+    setSum((calc * Number(length)).toFixed(1));
   }
 
   return (
